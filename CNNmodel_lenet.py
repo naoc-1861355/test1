@@ -24,7 +24,7 @@ def decay(epoch):
     if epoch < 10:
         return 0.001
     else:
-        return 0.001 * (0.5 ** (epoch // 10))
+        return 0.001 * (0.1 ** (epoch // 10))
 
 
 if __name__ == '__main__':
