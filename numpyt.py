@@ -45,3 +45,20 @@ a = np.arange(9).reshape((3, 3))
 c = np.multiply(a,a)
 print(c)
 print(a*a)
+x = np.arange(6).reshape((1,2,3))
+print(x)
+print(x.transpose((1,0,2)))
+y = np.array([[1,2],[3,4]])
+z = np.arange(4)+1
+z = z.reshape((2,2))
+if(np.all(y==z)):
+    print('yes')
+else:
+    print('no')
+
+y = np.arange(30720).reshape((10,3072))
+print(y.reshape((-1,3,32,32)).transpose(0,2,3,1))
+z = np.array([np.array([np.array([np.array([y[num,i+j+c*1024] for c in range(3)]) for j in range(32)]) for i in range(32)]) for num in range(y.shape[0])])
+print(z.shape)
+files = range(10000)
+print('estimate: '+ str(len(files)/200) + ' min')
