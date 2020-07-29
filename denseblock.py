@@ -1,6 +1,7 @@
 import tensorflow as tf
 
 
+
 class DenseConv(tf.keras.layers.Layer):
     def __init__(self,channel):
         super(DenseConv,self).__init__()
