@@ -1,10 +1,10 @@
 import tensorflow as tf
 import numpy as np
-new_model_1 = tf.keras.models.load_model('lenet-5.h5')
+new_model_1 = tf.keras.models.load_model('models/lenet-5.h5')
 new_model_1.summary()
-new_model_2 = tf.keras.models.load_model('lenet-5-2.h5')
+new_model_2 = tf.keras.models.load_model('models/lenet-5-2.h5')
 new_model_2.summary()
-new_model_3 = tf.keras.models.load_model('lenet-5-dropout.h5')
+new_model_3 = tf.keras.models.load_model('models/lenet-5-dropout.h5')
 new_model_3.summary()
 y = new_model_3(np.zeros((1,28,28,1)).astype('float32'))
 with tf.Session() as sess:
@@ -18,7 +18,7 @@ my_model = tf.keras.models.Sequential([new_model_3.layers[i] for i in range(4)],
 my_model.add(tf.keras.layers.Flatten())
 my_model.add(tf.keras.layers.Dense(10))
 my_model.summary()
-nnew_model = tf.keras.models.load_model('3NN_50_mnist_fashion_4.h5')
+nnew_model = tf.keras.models.load_model('models/3NN_50_mnist_fashion_4.h5')
 nnew_model.summary()
 '''
 model = tf.keras.models.Sequential([

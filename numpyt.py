@@ -1,5 +1,6 @@
 import numpy as np
-
+import os
+from os.path import join
 w = np.zeros((2, 3))
 print(w.dtype)
 
@@ -62,3 +63,9 @@ z = np.array([np.array([np.array([np.array([y[num,i+j+c*1024] for c in range(3)]
 print(z.shape)
 files = range(10000)
 print('estimate: '+ str(len(files)/200) + ' min')
+count = 1
+p = 'f_out_path/'+'%d.png' % count
+print(p.__class__)
+print(p)
+if p in ['f_out_path/1.png']:
+    print(join('f_out_path', '%d.png') % count)

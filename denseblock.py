@@ -1,6 +1,6 @@
 import tensorflow as tf
 
-
+import pickle
 
 class DenseConv(tf.keras.layers.Layer):
     def __init__(self,channel):
@@ -13,20 +13,25 @@ class DenseConv(tf.keras.layers.Layer):
         pass
 
     def call(self, inputs, **kwargs):
-        x = self.conv2d(inputs)
-        x = self.bn(x)
+        x = self.bn(inputs)
         x = self.relu(x)
-        return tf.keras.layers.concatenate([x,inputs])
+        x = self.conv2d(x)
+        return tf.keras.layers.concatenate([x,inputs],axis=-1)
 
 
 class DenseBlock(tf.keras.layers.Layer):
-    def __init__(self,channel,num_convs):
+    def __init__(self, num_convs, channel):
         super(DenseBlock,self).__init__()
         self.listlayer = []
-        for _ in num_convs:
+        for _ in range(num_convs):
             self.listlayer.append(DenseConv(channel))
 
     def call(self, x, **kwargs):
         for layer in self.listlayer:
             x = layer(x)
         return x
+
+blk = DenseBlock(2, 10)
+X = tf.random.uniform((4, 8, 8, 3))
+Y = blk(X)
+print(Y.shape)

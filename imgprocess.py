@@ -24,6 +24,6 @@ if __name__ == '__main__':
     x = mobilenet.layers[-2].output
     customize = tf.keras.models.Model(inputs=mobilenet.input, outputs=x,name='???')
     customize.summary()
-    tf.keras.utils.plot_model(mobilenet,'mobilev2.png',show_shapes=True)
+    #tf.keras.utils.plot_model(mobilenet,'mobilev2.png',show_shapes=True)
     inception = tf.keras.applications.InceptionV3(input_shape = (299,299,3), include_top=False, weights='imagenet')
     #tf.keras.utils.plot_model(inception,'inceptionv3.png',show_shapes=True)
